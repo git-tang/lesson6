@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="学科管理">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -52,6 +52,21 @@
                 return true;
 
             }
+        </script>
+        <script type="text/javascript">
+            function check()
+            {
+                var name = document.getElementById("name");
+                var errStr = "";
+                if (name.value == "" || name.value == null)
+                {
+                    errStr += "表单不能为空\n";
+                }
+
+                alert(errStr);
+                return false;
+            }
+            document.getElementById("regForm").onsubmit = check;
         </script>
     </jsp:attribute>
 
@@ -107,9 +122,9 @@
 
                             <div class="ui-widget-content">
                                 <span class="hidden-sm hidden-xs btn-group pull-right">
-                                <form action="/student/addsubject.do" name="form1" onSubmit="return myCheck()">
+                                <form action="student/addsubject.do" id="regForm" name="form1" onSubmit="return myCheck()">
 
-                                    <input value="" name="name" class="col-xs-10 col-sm-5" placeholder="学科名"/>
+                                    <input id="name" value="" name="name" class="col-xs-10 col-sm-5" placeholder="学科名"/>
 
                                     <button class="btn btn-mini btn-yellow" type="submit">
                                         <spring:message code="添加学科" />
@@ -156,13 +171,17 @@
 <%--
                                                 <th><a href="/student/daoupdategrade.do?id=${grade.id}"><i class="ace-icon fa fa-pencil bigger-120"></i></a></th>
 --%>
-                                                <th><form action="/student/updatesubject.do" name="form1" onSubmit="return myCheck()">
+                                                <th><form action="student/updatesubject.do" name="form1" onSubmit="return myCheck()">
                                                     <input type="hidden" value="${markVo.id}" name="id"/>
+
+
                                                     <input value="${markVo.name}" name="name" class="col-xs-10 col-sm-5"/>
 
-                                                    <input type="submit">
+                                                    <button class="btn btn-mini btn-yellow" type="submit">
+                                                        <spring:message code="修改" />
+                                                    </button>
                                                 </form></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/deletesubject.do?id=${markVo.id}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/deletesubject.do?id=${markVo.id}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
 
                                             </tr>
                                             <tr class="detail-row">

@@ -2,6 +2,7 @@ package com.biz.lesson.vo.student_tp;
 
 import com.biz.lesson.model.manage.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GradeVo {
@@ -11,7 +12,7 @@ public class GradeVo {
 
     private Integer avgscore;
 
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public Integer getId() {
         return id;

@@ -3,8 +3,7 @@ package com.biz.lesson.util;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,7 +56,7 @@ public class OSSUtil {
      * 测试类
      * @throws FileNotFoundException
      */
-    @Test
+
     public void name() throws FileNotFoundException {
         String file = "F:\\4.png";
 

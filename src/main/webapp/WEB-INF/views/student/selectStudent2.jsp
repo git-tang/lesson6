@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="查询学生信息">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -82,7 +82,7 @@
                     <div class="widget-body">
                         <div class="row">
                             <div class="widget-main">
-                                <form id="form" name="form1" method="get" action="/student/sousuo.do" class="form-horizontal" role="form" onSubmit="return myCheck()">
+                                <form id="form" name="form1" method="get" action="student/sousuo.do" class="form-horizontal" role="form" onSubmit="return myCheck()">
 
 
                                 <div class="form-group">
@@ -198,10 +198,10 @@
                                                 <th><%--<spring:message code="accesslog.uri"/>--%><c:out value="${student.grade.name}"></c:out></th>
                                                 <th><%--<spring:message code="accesslog.uri"/>--%><c:out value="${student.marks.size()}"></c:out></th>
                                                 <th><%--<spring:message code="accesslog.uri"/>--%><c:out value="${student.avgscore}"></c:out></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/daoaddmark.do?id=${student.id}"><i class="ace-icon fa  bigger-120">录入成绩</i></a></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/daoxuanke.do?id=${student.id}"><i class="ace-icon fa  bigger-120">选课</i></a></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/daoupdate.do?id=${student.id}"><i class="ace-icon fa fa-pencil bigger-120"></i></a></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/deletestudent.do?id=${student.id}&page=${page}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/daoaddmark.do?id=${student.id}"><i class="ace-icon fa  bigger-120">录入成绩</i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/daoxuanke.do?id=${student.id}"><i class="ace-icon fa  bigger-120">选课</i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/daoupdate.do?id=${student.id}"><i class="ace-icon fa fa-pencil bigger-120"></i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/deletestudent.do?id=${student.id}&page=${page}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
 
                                             </tr>
                                             <tr class="detail-row">

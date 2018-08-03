@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="录入分数">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -43,7 +43,7 @@
         <script>
             function myCheck() {         //验证是否为非负整数
 
-                var patrn = /^\\d+$/;
+                var patrn = /^\d+(\.{0,1}\d+){0,1}$/;
                 var val = $("#score").val();
 
                 if (patrn.exec(val) == null || value == "") {
@@ -111,7 +111,7 @@
                                                 value="${mark.name}"></c:out></th>
                                         <th><%--<spring:message code="accesslog.uri"/>--%><%--<c:out
                                                 value="${mark.score}"></c:out>--%>
-                                            <form action="/student/updatemark.do" name="form1" onSubmit="return myCheck()">
+                                            <form action="student/updatemark.do" name="form1" onSubmit="return myCheck()">
                                                 <input type="hidden" value="${student.id}" name="sid"/>
                                                 <input type="hidden" value="${mark.id}" name="mid"/>
                                                 <input id="score" value="${mark.score}" name="score" class="col-xs-10 col-sm-5"/>

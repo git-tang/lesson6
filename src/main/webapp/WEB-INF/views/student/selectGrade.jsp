@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="班级管理">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -36,6 +36,8 @@
                 });
             });
         </script>
+
+
         <script type="text/javascript">
             function myCheck()
             {
@@ -47,11 +49,43 @@
                         document.form1.elements[i].focus();
                         return false;
                     }
+
                 }
                 return true;
 
             }
         </script>
+
+        <script type="text/javascript">
+        function check()
+        {
+            var name = document.getElementById("name");
+            var errStr = "";
+            alert("dasdsadsa");
+            if (name.value == "" || name.value == null)
+            {
+                errStr += "表单不能为空\n";
+            }
+
+            alert(errStr);
+            return false;
+        }
+        document.getElementById("regForm").onsubmit = check;
+
+        function check2()
+        {
+
+            var name2 = document.getElementById("name2").value;
+            if ( name2 = "" || name2 == null)
+            {
+                alert("表单不能为空\n");return false;
+            }
+
+
+            return true;
+        }
+        /*document.getElementById("regForm2").onsubmit = check2;*/
+    </script>
     </jsp:attribute>
 
     <jsp:attribute name="css">
@@ -106,11 +140,11 @@
 
                             <div class="ui-widget-content">
                                 <span class="hidden-sm hidden-xs btn-group pull-right">
-                                <form action="/student/addgrade.do" name="form1" onSubmit="return myCheck()">
+                                <form action="student/addgrade.do" id="regForm" name="form1" onSubmit="return myCheck()">
 
-                                    <input value="" name="name" class="col-xs-10 col-sm-5" placeholder="班级名"/>
+                                    <input value="" id="name" name="name" class="col-xs-10 col-sm-5" placeholder="班级名"/>
 
-                                    <button class="btn btn-mini btn-yellow" type="submit">
+                                    <button class="btn btn-mini btn-yellow" type="submit" >
                                         <spring:message code="添加班级" />
                                     </button>
                                 </form>
@@ -155,98 +189,21 @@
 <%--
                                                 <th><a href="/student/daoupdategrade.do?id=${grade.id}"><i class="ace-icon fa fa-pencil bigger-120"></i></a></th>
 --%>
-                                                <th><form action="/student/updategrade.do" name="form1" onSubmit="return myCheck()">
-                                                    <input type="hidden" value="${grade.id}" name="id"/>
-                                                    <input value="${grade.name}" name="name" class="col-xs-10 col-sm-5"/>
+                                                <th><form action="student/updategrade.do"  id="regForm2" name="form1" onSubmit="return check2()">
 
+                                                    <input  id="name2" value="${grade.name}"  name="name" class="col-xs-10 col-sm-5"/>
+                                                    <input  type="hidden" value="${grade.id}" name="id"/>
                                                     <button class="btn btn-mini btn-yellow" type="submit">
                                                         <spring:message code="修改" />
                                                     </button>
                                                 </form></th>
-                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="/student/deletegrade.do?id=${grade.id}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
+                                                <th><%--<spring:message code="accesslog.uri"/>--%><a href="student/deletegrade.do?id=${grade.id}"><i class="ace-icon fa fa-trash-o bigger-120"></i></a></th>
 
                                             </tr>
                                             <tr class="detail-row">
                                                 <td colspan="13">
                                                     <!------------------------------------------>
-                                                    <%--<div class="table-detail">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-2">
-                                                                <div class="text-center">
-                                                                    <img height="150" class="thumbnail inline no-margin-bottom" alt="Domain Owner's Avatar"
-                                                                         src="https://file-img.oss-cn-beijing.aliyuncs.com/${student.img}">
-                                                                    <br>
-                                                                    <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                                                        <div class="inline position-relative">
-                                                                                &lt;%&ndash;<a class="user-title-label" href="#">&ndash;%&gt;
-                                                                            <i class="ace-icon fa fa-circle light-green"></i>
-                                                                            &nbsp;
-                                                                            <span class="white"><c:out value="${student.name}"></c:out></span>
-                                                                                &lt;%&ndash;</a>&ndash;%&gt;
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-xs-12 col-sm-7">
-                                                                <div class="space visible-xs"></div>
-
-                                                                <div class="profile-user-info profile-user-info-striped">
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name"> 姓名 </div>
-
-                                                                        <div class="profile-info-value">
-                                                                            <span><c:out value="${student.name}"></c:out></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name"> 学号 </div>
-
-                                                                        <div class="profile-info-value">
-
-                                                                            <span><c:out value="${student.studentid}"></c:out></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name"> 性别 </div>
-
-                                                                        <div class="profile-info-value">
-                                                                            <span><c:out value="${student.sex}"></c:out></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name"> 出生日期 </div>
-
-                                                                        <div class="profile-info-value">
-                                                                            <span><fmt:formatDate pattern="yyyy-MM-dd" value="${student.birthday}"/></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name">班级 </div>
-
-                                                                        <div class="profile-info-value">
-                                                                            <span><c:out value="${student.grade.name}"></c:out></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="profile-info-row">
-                                                                        <div class="profile-info-name"> 选修科目及分数 </div>
-
-                                                                        <div class="profile-info-value">
-                                                                            <span><c:forEach items="${student.marks}" var="mark">
-                                                                                <c:out value="${mark.name}  "></c:out>
-                                                                                <c:out value="${mark.score}  "></c:out>
-                                                                            </c:forEach></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>--%>
 
 
                                                         <table>

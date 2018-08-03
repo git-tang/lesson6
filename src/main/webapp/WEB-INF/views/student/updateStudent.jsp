@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="修改学生信息">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -83,7 +83,7 @@
                     <div class="widget-body">
                         <div class="row">
                             <div class="widget-main">
-                                <form id="form" method="post" action="/student/updatestudent.do" class="form-horizontal" role="form" enctype="multipart/form-data" name="form1" onSubmit="return myCheck()">
+                                <form id="form" method="post" action="student/updatestudent.do" class="form-horizontal" role="form" enctype="multipart/form-data" name="form1" onSubmit="return myCheck()">
 
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right"><%--<spring:message code="accesslog.keywords"/>--%>学号 </label>

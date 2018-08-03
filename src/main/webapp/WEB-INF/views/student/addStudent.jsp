@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="添加学生信息">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -35,6 +35,22 @@
                     $("#dateRangePicker").val("");
                 });
             });
+        </script>
+        <script type="text/javascript">
+            function myCheck()
+            {
+                for(var i=0;i<document.form1.elements.length-1;i++)
+                {
+                    if(document.form1.elements[i].value=="")
+                    {
+                        alert("当前表单不能有空项");
+                        document.form1.elements[i].focus();
+                        return false;
+                    }
+                }
+                return true;
+
+            }
         </script>
     </jsp:attribute>
 
@@ -67,7 +83,7 @@
                     <div class="widget-body">
                         <div class="row">
                             <div class="widget-main">
-                                <form id="form" method="post" action="/student/addstudent.do" class="form-horizontal" role="form" enctype="multipart/form-data">
+                                <form id="form" method="post" action="student/addstudent.do" class="form-horizontal" role="form" enctype="multipart/form-data" name="form1" onSubmit="return myCheck()">
 
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right"><%--<spring:message code="accesslog.keywords"/>--%>学号 </label>

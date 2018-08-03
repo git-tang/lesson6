@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<lesson:page title="accesslog.title.search">
+<lesson:page title="学生选课">
 
     <jsp:attribute name="script">
 		<script src="static-resource/ace/assets/js/moment.min.js"></script>
@@ -185,7 +185,7 @@
                     </div>
                     </form>
                 </div>--%>
-                    <form action="/student/xuanke.do" name="form1" onSubmit="return myCheck()">
+                    <form action="student/xuanke.do" name="form1" onSubmit="return myCheck()">
                     <div class="widget-body">
                         <input type="hidden" name="id" value="<c:out value="${student.id}"></c:out>"/>
                         <div class="widget-main padding-6 no-padding-left no-padding-right">
